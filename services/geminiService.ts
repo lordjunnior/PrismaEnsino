@@ -3,7 +3,7 @@ import { GoogleGenAI, Modality } from "@google/genai";
 
 const getAI = () => {
   // Verificação de segurança para evitar crash se process não estiver definido
-  const apiKey = (typeof process !== 'undefined' && process.env) ? process.env.API_KEY : '';
+  const apiKey = import.meta.env.VITE_GEMINI_API_KEY || '';
   return new GoogleGenAI({ apiKey });
 };
 
