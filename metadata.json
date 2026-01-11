@@ -1,0 +1,7 @@
+{
+  "name": "PRISMA ENSINO - Assistente Pedagógico",
+  "description": "Uma plataforma inteligente para professores do ensino infantil e fundamental inicial (4-10 anos) criar atividades, planos de aula e resumos para pais de forma humana e eficiente.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}
