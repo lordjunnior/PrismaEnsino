@@ -216,12 +216,12 @@ export const geminiService = {
 
   async getAudioBuffer(text: string, context: AudioContext, isNarration: boolean = false, isSleepy: boolean = false): Promise<AudioBuffer | null> {
     const ai = getAI();
-    let instruction = `Com uma voz doce e clara, narre este texto pedagógico: ${text.substring(0, 1000)}`;
+    let instruction = `Com uma voz doce e clara, narre este texto pedagógico: ${text.substring(0, 2000)}`;
     
     if (isSleepy) {
-        instruction = `Narre este conto de dormir com a voz mais calma e relaxante: ${text.substring(0, 1000)}`;
+        instruction = `Narre este conto de dormir com a voz mais calma e relaxante: ${text.substring(0, 2000)}`;
     } else if (isNarration) {
-        instruction = `Narre este texto como um contador de histórias carinhoso: ${text.substring(0, 1000)}`;
+        instruction = `Narre este texto como um contador de histórias carinhoso: ${text.substring(0, 2000)}`;
     }
 
     const response = await ai.models.generateContent({
@@ -244,3 +244,4 @@ export const geminiService = {
     return null;
   }
 };
+```
