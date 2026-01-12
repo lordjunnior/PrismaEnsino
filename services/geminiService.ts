@@ -46,7 +46,7 @@ export const geminiService = {
     const prompt = `Crie uma atividade pedagógica adequada para uma criança de ${params.age} anos. Objetivo: ${params.objective}. Tempo: ${params.estimatedTime}.`;
 
     const response = await ai.models.generateContent({
-      model: 'gemini-2.0-flash-exp',
+      model: 'gemini-1.5-flash',
       contents: prompt,
       config: {
         systemInstruction: "Você é um assistente pedagógico profissional. Responda em Português com tom afetuoso.",
@@ -63,11 +63,11 @@ export const geminiService = {
     estimatedTime: string;
   }) {
     const ai = getAI();
-    const prompt = `Gere um PLANO DE AULA COMPLETO. Tema: ${params.theme}. Objetivo: ${params.objective}. Faixa Etária: ${params.ageRange}. Duração: ${params.estimatedTime}.
+    const prompt = `Gere um PLANO DE AULA COMPLETO. Tema: ${params.theme}. Objetivo: ${params.objetivo}. Faixa Etária: ${params.ageRange}. Duração: ${params.estimatedTime}.
     Inclua: Introdução, Desenvolvimento, Atividade Prática, Avaliação e Materiais Necessários.`;
 
     const response = await ai.models.generateContent({
-      model: 'gemini-2.0-flash-exp',
+      model: 'gemini-1.5-flash',
       contents: prompt,
       config: {
         systemInstruction: "Você é um assistente pedagógico. Crie planos de aula estruturados, alinhados à BNCC e com foco no desenvolvimento integral da criança.",
@@ -105,7 +105,7 @@ export const geminiService = {
     }
 
     const response = await ai.models.generateContent({
-      model: 'gemini-2.0-flash-exp',
+      model: 'gemini-1.5-flash',
       contents: prompt,
       config: {
         systemInstruction: `Você é um contador de histórias especialista em infância.
@@ -132,7 +132,7 @@ export const geminiService = {
     Objetivo: ${params.objective}.`;
 
     const response = await ai.models.generateContent({
-      model: 'gemini-2.0-flash-exp',
+      model: 'gemini-1.5-flash',
       contents: prompt,
       config: {
         systemInstruction: `Aja exclusivamente como um módulo de criação de material visual educativo. 
@@ -157,7 +157,7 @@ export const geminiService = {
     Atividade original: ${params.originalActivity}`;
 
     const response = await ai.models.generateContent({
-      model: 'gemini-2.0-flash-exp',
+      model: 'gemini-1.5-flash',
       contents: prompt,
       config: {
         systemInstruction: `Aja exclusivamente como um módulo de ajuste de níveis pedagógicos. Adapte a atividade fornecida mantendo seu objetivo original, com linguagem simples e acolhedora.`,
@@ -182,7 +182,7 @@ export const geminiService = {
     Observações: ${params.observations || 'Nenhuma'}`;
 
     const response = await ai.models.generateContent({
-      model: 'gemini-2.0-flash-exp',
+      model: 'gemini-1.5-flash',
       contents: prompt,
       config: {
         systemInstruction: `Aja exclusivamente como um módulo de comunicação para pais e responsáveis.
@@ -204,7 +204,7 @@ export const geminiService = {
     const prompt = `Adapte o seguinte texto para um roteiro de narração em áudio: ${text}`;
 
     const response = await ai.models.generateContent({
-      model: 'gemini-2.0-flash-exp',
+      model: 'gemini-1.5-flash',
       contents: prompt,
       config: {
         systemInstruction: `Aja exclusivamente como um módulo de narração em áudio educativo. Transforme o texto em roteiro humano, com pausas (...) e tom acolhedor.`,
@@ -226,7 +226,7 @@ export const geminiService = {
     }
 
     const response = await ai.models.generateContent({
-      model: "gemini-2.0-flash-exp",
+      model: "gemini-1.5-flash",
       contents: [{ parts: [{ text: instruction }] }],
       config: {
         responseModalities: [Modality.AUDIO],
