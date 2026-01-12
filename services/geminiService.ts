@@ -1,8 +1,6 @@
-
 import { GoogleGenAI, Modality } from "@google/genai";
 
 const getAI = () => {
-  // Verificação de segurança para evitar crash se process não estiver definido
   const apiKey = import.meta.env.VITE_GEMINI_API_KEY || '';
   return new GoogleGenAI({ apiKey });
 };
@@ -48,7 +46,7 @@ export const geminiService = {
     const prompt = `Crie uma atividade pedagógica adequada para uma criança de ${params.age} anos. Objetivo: ${params.objective}. Tempo: ${params.estimatedTime}.`;
 
     const response = await ai.models.generateContent({
-      model: 'gemini-3-flash-preview',
+      model: 'gemini-2.0-flash-exp',
       contents: prompt,
       config: {
         systemInstruction: "Você é o PRISMA ENSINO, um assistente pedagógico profissional. Responda em Português com tom afetuoso.",
@@ -69,7 +67,7 @@ export const geminiService = {
     Inclua: Introdução, Desenvolvimento, Atividade Prática, Avaliação e Materiais Necessários.`;
 
     const response = await ai.models.generateContent({
-      model: 'gemini-3-pro-preview',
+      model: 'gemini-2.0-flash-exp',
       contents: prompt,
       config: {
         systemInstruction: "Você é o PRISMA ENSINO. Crie planos de aula estruturados, alinhados à BNCC e com foco no desenvolvimento integral da criança.",
@@ -107,7 +105,7 @@ export const geminiService = {
     }
 
     const response = await ai.models.generateContent({
-      model: 'gemini-3-flash-preview',
+      model: 'gemini-2.0-flash-exp',
       contents: prompt,
       config: {
         systemInstruction: `Você é o PRISMA ENSINO, um contador de histórias especialista em infância.
@@ -133,7 +131,7 @@ export const geminiService = {
     Objetivo: ${params.objective}.`;
 
     const response = await ai.models.generateContent({
-      model: 'gemini-3-flash-preview',
+      model: 'gemini-2.0-flash-exp',
       contents: prompt,
       config: {
         systemInstruction: `Aja exclusivamente como um módulo de criação de material visual educativo do PRISMA ENSINO. 
@@ -158,7 +156,7 @@ export const geminiService = {
     Atividade original: ${params.originalActivity}`;
 
     const response = await ai.models.generateContent({
-      model: 'gemini-3-flash-preview',
+      model: 'gemini-2.0-flash-exp',
       contents: prompt,
       config: {
         systemInstruction: `Aja exclusivamente como um módulo de ajuste de níveis pedagógicos do PRISMA ENSINO. Adapte a atividade fornecida mantendo seu objetivo original, com linguagem simples e acolhedora.`,
@@ -183,7 +181,7 @@ export const geminiService = {
     Observações: ${params.observations || 'Nenhuma'}`;
 
     const response = await ai.models.generateContent({
-      model: 'gemini-3-flash-preview',
+      model: 'gemini-2.0-flash-exp',
       contents: prompt,
       config: {
         systemInstruction: `Aja exclusivamente como um módulo de comunicação para pais e responsáveis do PRISMA ENSINO.
@@ -205,7 +203,7 @@ export const geminiService = {
     const prompt = `Adapte o seguinte texto para um roteiro de narração em áudio: ${text}`;
 
     const response = await ai.models.generateContent({
-      model: 'gemini-3-flash-preview',
+      model: 'gemini-2.0-flash-exp',
       contents: prompt,
       config: {
         systemInstruction: `Aja exclusivamente como um módulo de narração em áudio educativo do PRISMA ENSINO. Transforme o texto em roteiro humano, com pausas (...) e tom acolhedor.`,
@@ -227,7 +225,7 @@ export const geminiService = {
     }
 
     const response = await ai.models.generateContent({
-      model: "gemini-2.5-flash-preview-tts",
+      model: "gemini-2.0-flash-exp",
       contents: [{ parts: [{ text: instruction }] }],
       config: {
         responseModalities: [Modality.AUDIO],
