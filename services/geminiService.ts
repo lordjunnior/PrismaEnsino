@@ -49,7 +49,7 @@ export const geminiService = {
       model: 'gemini-2.0-flash-exp',
       contents: prompt,
       config: {
-        systemInstruction: "Você é o PRISMA ENSINO, um assistente pedagógico profissional. Responda em Português com tom afetuoso.",
+        systemInstruction: "Você é um assistente pedagógico profissional. Responda em Português com tom afetuoso.",
       },
     });
 
@@ -70,7 +70,7 @@ export const geminiService = {
       model: 'gemini-2.0-flash-exp',
       contents: prompt,
       config: {
-        systemInstruction: "Você é o PRISMA ENSINO. Crie planos de aula estruturados, alinhados à BNCC e com foco no desenvolvimento integral da criança.",
+        systemInstruction: "Você é um assistente pedagógico. Crie planos de aula estruturados, alinhados à BNCC e com foco no desenvolvimento integral da criança.",
       },
     });
 
@@ -108,12 +108,13 @@ export const geminiService = {
       model: 'gemini-2.0-flash-exp',
       contents: prompt,
       config: {
-        systemInstruction: `Você é o PRISMA ENSINO, um contador de histórias especialista em infância.
+        systemInstruction: `Você é um contador de histórias especialista em infância.
         DIRETRIZES DE SEGURANÇA EMOCIONAL (OBRIGATÓRIO):
         - NUNCA inclua: medo, violência, abandono, morte, vilões assustadores ou conflitos intensos.
         - NUNCA use linguagem agressiva ou moral pesada.
         - Sempre foque em final positivo, sensação de segurança e acolhimento.
-        - Use pausas suaves (...) para marcar o ritmo.`,
+        - Use pausas suaves (...) para marcar o ritmo.
+        - NUNCA mencione o nome de nenhuma plataforma, aplicativo ou ferramenta.`,
         temperature: 0.7,
       },
     });
@@ -134,7 +135,7 @@ export const geminiService = {
       model: 'gemini-2.0-flash-exp',
       contents: prompt,
       config: {
-        systemInstruction: `Aja exclusivamente como um módulo de criação de material visual educativo do PRISMA ENSINO. 
+        systemInstruction: `Aja exclusivamente como um módulo de criação de material visual educativo. 
         Ao receber um tema e uma idade, sua função é:
         - Descrever detalhadamente um material visual pedagógico.
         - O visual deve ser limpo e organizado.
@@ -159,7 +160,7 @@ export const geminiService = {
       model: 'gemini-2.0-flash-exp',
       contents: prompt,
       config: {
-        systemInstruction: `Aja exclusivamente como um módulo de ajuste de níveis pedagógicos do PRISMA ENSINO. Adapte a atividade fornecida mantendo seu objetivo original, com linguagem simples e acolhedora.`,
+        systemInstruction: `Aja exclusivamente como um módulo de ajuste de níveis pedagógicos. Adapte a atividade fornecida mantendo seu objetivo original, com linguagem simples e acolhedora.`,
         temperature: 0.7,
       },
     });
@@ -184,7 +185,7 @@ export const geminiService = {
       model: 'gemini-2.0-flash-exp',
       contents: prompt,
       config: {
-        systemInstruction: `Aja exclusivamente como um módulo de comunicação para pais e responsáveis do PRISMA ENSINO.
+        systemInstruction: `Aja exclusivamente como um módulo de comunicação para pais e responsáveis.
         Sua função é:
         - Receber informações sobre o trabalho pedagógico e transformá-las em um resumo claro e afetuoso.
         - Usar linguagem 100% acessível, eliminando termos técnicos ou acadêmicos.
@@ -206,7 +207,7 @@ export const geminiService = {
       model: 'gemini-2.0-flash-exp',
       contents: prompt,
       config: {
-        systemInstruction: `Aja exclusivamente como um módulo de narração em áudio educativo do PRISMA ENSINO. Transforme o texto em roteiro humano, com pausas (...) e tom acolhedor.`,
+        systemInstruction: `Aja exclusivamente como um módulo de narração em áudio educativo. Transforme o texto em roteiro humano, com pausas (...) e tom acolhedor.`,
         temperature: 0.6,
       },
     });
@@ -216,12 +217,12 @@ export const geminiService = {
 
   async getAudioBuffer(text: string, context: AudioContext, isNarration: boolean = false, isSleepy: boolean = false): Promise<AudioBuffer | null> {
     const ai = getAI();
-    let instruction = `Com uma voz doce e clara, narre este texto pedagógico: ${text.substring(0, 2000)}`;
+    let instruction = `Com uma voz doce e clara, narre este texto pedagógico: ${text.substring(0, 1500)}`;
     
     if (isSleepy) {
-        instruction = `Narre este conto de dormir com a voz mais calma e relaxante: ${text.substring(0, 2000)}`;
+        instruction = `Narre este conto de dormir com a voz mais calma e relaxante: ${text.substring(0, 1500)}`;
     } else if (isNarration) {
-        instruction = `Narre este texto como um contador de histórias carinhoso: ${text.substring(0, 2000)}`;
+        instruction = `Narre este texto como um contador de histórias carinhoso: ${text.substring(0, 1500)}`;
     }
 
     const response = await ai.models.generateContent({
